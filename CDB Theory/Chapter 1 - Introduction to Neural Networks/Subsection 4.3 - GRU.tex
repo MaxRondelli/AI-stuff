@@ -1,0 +1,12 @@
+\subsection{Gated Recurrent Unit (GRU)}
+In a 2014 paper, Kyunghyun Cho et al. made the suggestion for the Gated Recurrent Unit (GRU) cell \parencite{cho2014learning}.
+The GRU cell, which is an LSTM cell simplified, seems to work just as well. The main changes are as follows:
+
+\begin{itemize}
+    \item A single vector $h_{(t)}$ is created by combining the two state vectors.
+    \item Both the input gate and the forget gate are managed by a single gate controller $z_{(t)}$. The input gate is closed $(1-1 = 0)$ and the forget gate is open $(= 1)$ if the gate controller sends a $1$. The opposite occurs if the output is a $0$. To put it another way, whenever a memory needs to be saved, the area where it will be stored must first be deleted.
+    \item The entire state vector is output at each time step; there is no output gate. The main layer $g_{(t)}$ will only see certain portions of the prior state, thanks to a new gate controller $r_{(t)}$.
+\end{itemize}
+
+One of the key elements in the success of RNNs is the use of LSTM and GRU cells.
+

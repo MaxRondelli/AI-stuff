@@ -1,0 +1,47 @@
+\section{The Perceptron}
+The perceptron is one of the simplest ANN architectures. It is based on an artificial neuron called \textbf{threshold logic unit} (TLU), Figure \ref{fig:TLU Scheme}. The inputs and outputs are numbers, instead of binary on/off values, and each input connection is associated with a weight.  
+The TLU computes a linear function of its inputs: 
+\[
+z = w_1 \cdot x_1 + w_2 \cdot x_2 + ... + w_n \cdot x_n + b = w^T \cdot x + b
+\]
+After that, it applies a step function to the result: 
+\[
+h_w(x) = f(z)
+\]
+The model parameters are the input weights \textbf{w} and the bias term \textit{b}.
+A single TLU, can be used for simple linear binary classification. It computes a linear function of its inputs, and if the result exceeds a threshold, it outputs the positive class. Otherwise, it outputs the negative class. 
+
+\input{Chapter 1 - Introduction to Neural Networks/Figure/TLU.tex}
+
+A perceptron is composed of one or more TLUs organized in a single layer, where every TLU is connected to every input. It is called \textit{fully connected layer}. The inputs constitute the \textit{input layer} and the final output is called \textit{output layer}.
+It's possible to compute the outputs of a layer for more instance at once, just by applying the following formula:
+\[
+h_{W,b}(X) = \phi(XW + b)
+\]
+
+The parameters are: 
+\begin{itemize}
+    \item X represents the matrix of input features. 
+    \item The weight matrix W contains all the connection weights. 
+    \item The bias vector b contains all the bias terms (one per neuron).
+    \item The function $\phi$ is called the \textit{activation function}. When the artificial neuron is a TLU, it is called a step function (the activation function will be discussed in the following chapter).
+\end{itemize}
+
+\subsection{How to train a perceptron}
+Donald Hebb, considered the “father of neuropsychology”, in his 1949 book \textit{The Organization of Behavior}, suggested that when a biological neuron triggers another neuron often, the connection between these two neurons grows stronger. The connection weight between two neurons tends to increase when they fire simultaneously. This rule later became known as Hebb's rule. 
+Perceptrons are trained using a variant of this rule that takes into account the error made by the network when it makes a prediction. The perceptron learning rule reinforces connections that help reduce the error. 
+The rule is shown in the following equation:
+\[
+w_{i,j}^\text{next step} = w_{i,j} + \eta(y_i - \hat{y}_j) \cdot x_i
+\]
+
+where:
+\begin{itemize}
+    \item $w_{i,j}$ is the connection weight between the $i^\text{th}$ input and the $j^\text{th}$ neuron.
+    \item $x_i$ is the $i^\text{th}$ input value of the current training instance. 
+    \item $\hat{y}_j$ is the output of the $j^\text{th}$ output neuron for the current training instance. 
+    \item $y_j$ is the target output of the $j^\text{th}$ output neuron for the current training instance. 
+    \item $\eta$ is the learning rate. 
+\end{itemize}
+
+This perceptron training algorithm was proposed by Frank Rosenblatt who he got his inspiration from Hebb's rule. This algorithm is also called \textit{perceptron convergence theorem.}

@@ -1,0 +1,12 @@
+\section{Logical Computations with Neurons}
+The neurophysiologist Warren McCulloch and the mathematician Walter Pitts proposed, in 1943, a very simple model of the biological neuron, which became known as artificial neuron. It has one or more binary inputs and one binary output. The artificial neuron activates its output when more than a certain number of its inputs are active. 
+
+Let's see what these networks do:
+\begin{itemize}
+    \item The network \ref{ANNs1} says: if neuron A is activated, then neuron C gets activated as well since it receives two input signals from neuron A. on the contrary if A is off, C is off as well.
+    \item The network \ref{ANNs2} performs a logical \textit{AND}. Neuron C is activated only when both neurons A and B are activated. 
+    \item The network \ref{ANNs3} performs a logical \textit{OR}. Neuron C gets activated if either neuron A or B is activated. Or both. 
+    \item The network \ref{ANNs4} performs a complex logical proposition. Neuron C is activated only if neuron A is active and neuron B is off. They must follow this schema, otherwise, neuron C won't be activated. 
+\end{itemize}
+
+\input{Chapter 1 - Introduction to Neural Networks/Figure/ANNs performing logical computations.tex}

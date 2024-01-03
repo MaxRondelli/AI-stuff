@@ -1,0 +1,23 @@
+\subsection{Learning Rate and Optimizer}
+There are more hyperparameters in an MLP than the number of neurons and hidden layers that can be changed. Some of the most important are listed below:
+\paragraph{Learning rate} \mbox{} \\
+\noindent The learning rate is the most important hyperparameter. The ideal learning rate is often equal to half the maximum learning rate.  Training the model for a few hundred iterations with a very low learning rate, like $10^{-5}$, and progressively raising it to a very high number, like $10$, is one method of determining a good learning rate. If you plot the loss as a function of the learning rate, you should notice that it first decreases.
+However, after a while, the learning rate will become excessive, causing the loss to quickly increase again. The optimal learning rate will be slightly lower than the point at which the loss begins to increase.
+
+\paragraph{Optimizer}\mbox{}\\
+Equally important is selecting a better optimizer than just an odd mini-batch gradient descent. There are several optimizers that you can use to speed up the training but we are going to see just one, \textit{Adam}.
+Adam -, which stands for \textit{adaptive moment estimation}, combines the concepts of momentum optimization and RMSProp: it tracks an exponentially decaying average of previous gradients, just like momentum optimization, and just like RMSProp, it tracks an exponentially decaying average of previously squared gradients. These are estimates of the gradients' mean and variance. The algorithm's name comes from the fact that the mean is sometimes referred to as the first instant and the variance as the second.
+In other words, we can say the algorithm keeps track of two moving averages: the mean and the variance of the gradients; these moving averages are updated at each training step. This allows the algorithm to adapt to changes in the distribution of the gradients, which can be very beneficial for training deep neural networks:
+
+\input{Chapter 1 - Introduction to Neural Networks/Figure/Adam_equations.tex}
+
+where $\theta$ represents the parameters of the model, $\nabla_{\theta} J(\theta)$ is the gradient of the cost function J with respect to the parameters $\theta$, $\beta_1$ and $\beta_2$ are the decay rates of the moving averages, $\alpha$ is the learning rate, and $\epsilon is$ a small constant added to the denominator to prevent division by zero.
+
+\hspace{1cm}
+
+At each time step $t$, the mean $m_t$ and the variance $v_t$ of the gradients are updated using the equations \eqref{eq:2} and \eqref{eq:3}. Here, $m_{t-1}$ and $v_{t-1}$ represent the moving averages of the gradients and their squares from the previous time step. $\beta_1$ and $\ beta_2$ are hyperparameters that control the decay rate of the moving averages. They determine the amount of weight given to the past values of the gradients and their squares and the amount of weight given to the current gradient and its square.
+After updating $m_t$ and $v_t$, the moving averages are corrected for bias using the equations \eqref{eq:4} and \eqref{eq:5}. The bias correction ensures that the moving averages are a better estimate of the true mean and variance of the gradients, especially at the start of the optimization process when $t$ is small.
+Finally, the parameters $\theta$ are updated using the equation \eqref{eq:6}. Here, $\alpha$ is the learning rate, which determines the step size at which the parameters are updated. The term $\frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon}$ is an approximation of the gradient of the cost function $J$ with respect to the parameters $\theta$. The addition of $\epsilon$ in the denominator is used to prevent division by zero.
+
+This update rule balances the magnitude of the steps taken in the direction of the gradient with the magnitude of the gradient itself, allowing the optimization algorithm to make large steps in the directions with a high gradient and small steps in the directions with a low gradient. This makes the optimization process more efficient and helps the algorithm avoid getting stuck in local minima.
+There are three variants of Adam: AdaMax, Nadam, and Adam W.

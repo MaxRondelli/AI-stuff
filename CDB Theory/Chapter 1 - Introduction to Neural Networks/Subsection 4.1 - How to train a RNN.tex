@@ -1,0 +1,25 @@
+\subsection{How to train RNNs}
+You could say that a recurrent neuron has a form of memory because its output at a given time step $t$ is a function of all its inputs from earlier time steps. A \textit{memory cell} is a component of a neural network that keeps a certain state over successive time steps.
+The state of a cell at time step $t$, represented by the symbol $h_{(t)}$, is a function of some inputs at that time step and its state at the previous time step.
+So, we can say $h_{(t)} = f\left(x_{(t)}, h_{(t-1)}\right)$. The previous state and the current inputs are functions of the output at time step $t$, indicated as $\hat{y}_{(t)}$.
+
+\hspace{1cm}
+
+An RNN can accept a series of inputs and generate different sequences:
+\begin{itemize}
+    \item \textit{Sequence-to-sequence network:} it takes a sequence of inputs and produces a sequence of outputs at each time step $t$.
+    \item \textit{Sequence-to-vector network:} it takes a sequence of inputs, and you can consider only some outputs. For example, if you have 5 inputs, you might want only the last output, so you can ignore all the previous outputs.
+    \item \textit{Vector-to-sequence network:} The input sequence is a vector that you pass into the network at each time step and let it output a sequence. 
+    \item \textit{Encoder-decoder network:} This network is mostly used for translations. You pass a sentence in one language, and the output will be translated in another language. 
+\end{itemize}
+
+The idea is to unroll an RNN over time before using traditional backpropagation to train it. The term \textit{backpropagation over time} (BPTT) refers to this technique. The network is initially passed forward after it has been unrolled. After that, a loss function is used to evaluate the output sequence. 
+\begin{equation}
+    L(Y_{(0)}, Y_{(1)}, ...,Y_{(T)}; \hat{Y}_{(0)}, \hat{Y}_{(1)}, ...,\hat{Y}_{(T)})
+\end{equation}
+
+where $Y_{(i)}$ is the $i^{th}$ output, $\hat{Y}_{(i)}$ is the $i^{th}$ prediction and $T$ is the max time step. 
+For example, if we think about \textit{sequence-to-vector network}, we want to compute only just the last two outputs of the network, ignoring the first three outputs. It means that the loss function isn't computed on all outputs, but just on the last two.
+
+The unrolled network then propagates the gradients of that loss function backward. The gradients only pass through the outputs $\hat{Y}_{(3)}$ and $\hat{Y}_{(4)}$, since in the example the outputs $\hat{Y}_{(0)}$, $\hat{Y}_{(1)}$ and $\hat{Y}_{(2)}$ are not used to calculate the loss. Thusly, because $W$ and $b$ are identical parameters at every time step, their gradients will be changed numerous times during backprop. The parameters can be updated using a gradient descent step using BPTT when the backward phase is finished, and all the gradients have been computed.
+This is how RNN training is made. 

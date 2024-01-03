@@ -1,0 +1,24 @@
+\subsection{Long short-term memory (LSTM)}
+In 1997, Seep Hochreiter and Jürgen Schmidhuber proposed the "Long Short-Term Memory" (LSTM) cell, which was progressively improved over time by other researchers - . If the LSTM cell is viewed as a black box, it can be used in a similar way to that of a basic cell but will perform much better. Training will converge more quickly and find longer-term patterns in the data.
+
+How do LSTM cells work? Figure \ref{fig:LSTM_cell} represents its architecture. The LSTM cell appears just like a standard cell from the outside, except for the fact that its state has been divided into two vectors, $h_{(t)}$ and $c_{(t)}$. The short-term state is represented by $h_{(t)}$, and the long-term state is represented by $c_{(t)}$.
+
+The main concept is that the network can learn what to read from it, and what to discard or store in the long-term state. You can see that as the long-term state $c_{(t-1)}$ moves from left to right throughout the network, it first uses a forget gate to delete some memories before adding some new ones using an addition operation that includes memories that were chosen by an input gate. Without any further change, the result $c_{(t-1)}$ is sent out directly. Several memories are added, and some are deleted at each time step. The long-term state is copied and then passed via the tanh function following the addition operation. The output gate then filters the outcome. This produces the short-term state $h_{(t)}$.
+
+\input{Chapter 1 - Introduction to Neural Networks/Figure/LSTM_cell.tex}
+
+Now let's see how gates perform. First, four separate fully connected layers take the current input vector $x_{(t)}$ and the previous short-term state $h_{(t-1)}$. Each one has a specific function:
+\begin{itemize}
+    \item The layer that outputs $g_{(t)}$ is the primary layer. Its regular functions include processing the inputs for the present $x_{(t)}$ and the past $h_{(t-1)}$ states. The output of this layer is not sent directly outside. Instead, its most fundamental parts are stored in the long-term state. The rest is dropped.
+    \item Gate controllers are the three additional layers. The outputs are in the sigmoid activation function range, which is 0 to 1. The outputs from the gate controllers are fed into element-wise multiplication processes; if the output is a 0, the gate is closed; if a 1, the gate is opened. Particularly:
+    \begin{itemize}
+        \item The \textit{forget gate} $f_{(t)}$: determines which elements of the long-term state should be removed.
+        \item The \textit{input gate} $i_{(t)}$: determines which $g_{(t)}$ components go into the long-term state.
+        \item The \textit{output gate} $o_{(t)}$: determines which elements of the long-term state should be read and output at this time step, both to $h_{(t)}$ and $y_{(t)}$, 
+    \end{itemize}
+\end{itemize}
+
+In conclusion, we can say that an LSTM cell can understand how to identify important input, \textit{"input gate"} role, and it can store in a long-term state, preserve and use it whenever it wants, \textit{"forget gate"} role.
+There are more variants of the LSTM cell. Let's see now, the most used and important: the \textit{GRU} cell.
+
+\input{Chapter 1 - Introduction to Neural Networks/Figure/GRU_cell.tex}

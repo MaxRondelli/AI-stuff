@@ -1,0 +1,23 @@
+\section{Deep Neural Network}
+A Multilayer Perceptron (MLP), Figure \ref{fig:MLP}, is composed of one input layer, one or more layers of TLUs \textit{hidden layers}, and one final layer of TLUs called the \textit{output layer}.
+When an ANN contains a deep stack of hidden layers, it is called a \textit{deep neural network} (DNN). 
+For many years researchers struggled to find a way to train MLPs. In the 1960s, some researchers discussed the possibility of using gradient descent to train neural networks but just in 1970, a researcher named Seppo Linnainmaa introduced a technique to compute all the gradients automatically and efficiently. This algorithm is called \textit{reverse-mode automatic differentiation}. 
+In two passed through the network (one forward, one backward), it can compute the gradients of the neural network's error about every single model parameter.
+It can find out how each connection weight and each bias should be tweaked to reduce the neural network's error. 
+If you repeat this process of computing the gradients automatically and taking a gradient descent step, the neural network's error will gradually drop until it eventually reaches a minimum. This combination of reverse-mode automatic differentiation is called \textit{backpropagation}.
+\input{Chapter 1 - Introduction to Neural Networks/Figure/MLP.tex}
+Backpropagation can be applied to all sorts of computational graphs, not just neural networks. In 1985, David Rumelhart, Geoffrey Hinton, and Ronald Williams published a paper - analyzing how backpropagation allowed neural networks to learn useful internal representations. Today, it is the most popular way to train neural nets.
+
+\input{Chapter 1 - Introduction to Neural Networks/Subsection 3.1 - Backpropagation.tex}
+
+\input{Chapter 1 - Introduction to Neural Networks/Subsection 3.2 - The Vanishing_Exploding Gradients Problems.tex}
+
+\input{Chapter 1 - Introduction to Neural Networks/Subsection 3.3 - Activation functions.tex}
+
+\input{Chapter 1 - Introduction to Neural Networks/Subsection 3.4 - Hidden layers.tex}
+
+\input{Chapter 1 - Introduction to Neural Networks/Subsection 3.5 - Learning rate and Optimizer.tex}
+
+\input{Chapter 1 - Introduction to Neural Networks/Subsection 3.6 - Batch Normalization.tex}
+
+\input{Chapter 1 - Introduction to Neural Networks/Subsection 3.7 - Dropout.tex}

@@ -1,7 +1,7 @@
-\documentclass[12pt,a4paper, openright, twoside]{report} 
+\documentclass[12pt,a4paper]{report} 
 \textwidth=450pt \oddsidemargin=30pt \evensidemargin=20pt
-\include{packages.tex}
 
+\include{packages.tex}
 \begin{document}
 
 \begin{titlepage}
@@ -10,23 +10,17 @@
 Bologna}}}} \rule[0.1cm]{15.8cm}{0.1mm}
 \rule[0.5cm]{15.8cm}{0.6mm}
 {\small{\bf SCUOLA DI SCIENZE\\
-Informatica per il Management}}
+Informatica}}
 \end{center}
 \vspace{15mm}
 \begin{center} % The Power of Prediction: How Neural Networks are Changing the Future of Racing Tyre Strategy
-{\LARGE{\bf The Future of Formula 1 Racing:}}\vspace{1mm}\\
-{\LARGE{\bf  Neural Networks to Predict Tyre Strategy}}\\
+{\LARGE{\bf CDB Theory}}\vspace{1mm}
 \end{center}
 \vspace{40mm}
 \par
 \noindent
 \begin{minipage}[t]{0.47\textwidth}
-{\large{\bf Relatore:\\
-Chiar.ma Prof.ssa\\
-Elena Loli Piccolomini}} \\
-{\large{\bf Correlatore:\\
-Dott.\\
-Davide Evangelista}}
+{\large{\bf Professore:\\ Danilo Montesi}}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.47\textwidth}\raggedleft
@@ -35,16 +29,18 @@ Massimo Rondelli}}
 \end{minipage}
 \vspace{20mm}
 \begin{center}
-{\large{\bf Sessione III\\%inserire il numero della sessione in cui ci si laurea
-Anno Accademico 2021/2022}}%inserire l'anno accademico a cui si è iscritti
+{\large{\bf Anno Accademico 2023/2024}}%inserire l'anno accademico a cui si è iscritti
 \end{center}
 \end{titlepage}
 
+\setlength{\parindent}{20pt}
+\newcommand{\empt}[2]{$#1^{\langle #2 \rangle}$}
+
 \tableofcontents
 
+\include{Chapter 1 - Introduction to Neural Networks/Introduction to Deep Learning.tex}
 
-% \include{Chapter 2 - Introduction to Neural Networks/Introduction to Deep Learning.tex}
-
-
+\nocite{*}
+\printbibliography
 
 \end{document}

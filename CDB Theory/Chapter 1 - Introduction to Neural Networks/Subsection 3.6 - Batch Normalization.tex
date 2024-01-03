@@ -1,0 +1,43 @@
+\subsection{Batch Normalization}
+The danger of the vanishing/exploding gradients problems can be considerably reduced at the beginning of training by employing Glorot initialization in conjunction with ReLU, but this does not ensure that they won't reappear later on.
+In a 2015 paper -, Sergey Ioffe and Christopher Szegedy suggested a method to solve these issues called \textit{batch normalization} (BN). The procedure includes inserting an operation into the model just before or after each hidden layer's activation function. The technique helps the model discover the ideal mean and scale for each input layer. In many circumstances, standardizing your training set is unnecessary if you include a BN layer as the initial layer of your neural network.
+
+\hspace{1cm}
+
+Let's say that we have a mini-batch of N examples, and the activations for a particular layer for one example is given by $X = [x_1, x_2, ..., x_d]$, where d is the number of neurons in the layer. The batch normalization algorithm consists of the following steps:
+
+\begin{enumerate}
+\item Calculate the mean and variance of the activations for the mini-batch:
+
+\begin{equation}
+\text{mean} = \frac{1}{N} \sum_{i=1}^{N} X_i
+\end{equation}
+
+\begin{equation}
+\text{variance} = \frac{1}{N} \sum_{i=1}^{N} (X_i - \text{mean})^2
+\end{equation}
+
+\item Normalize the activations:
+
+\begin{equation}
+\hat{X} = \frac{X - \text{mean}}{\sqrt{\text{variance} + \epsilon}}
+\end{equation}
+
+where $\epsilon$ is a small constant added for numerical stability.
+
+\item Scale and shift the normalized activations:
+
+\begin{equation}
+X_{\text{bn}} = \gamma \cdot \hat{X} + \beta
+\end{equation}
+
+where $\gamma$ and $\beta$ are learnable parameters.
+
+\item Use the normalized and scaled activations as inputs to the next layer in the network.
+\end{enumerate}
+
+It is important to note that during training, the mean and variance of the activations are calculated on each mini-batch. During inference, the mean and variance are estimated using a running average that is updated during training. This allows the batch normalization layer to normalize the activations in a way that is consistent with the training data. In summary, the batch normalization algorithm normalizes the activations of a layer in a deep neural network by subtracting the mean and dividing by the standard deviation, scaling and shifting the result using learnable parameters, and using the normalized activations as inputs to the next layer in the network.
+
+\hspace{1cm}
+
+In conclusion, batch normalization is a widely used and effective technique for improving the training and performance of deep neural networks. It can help speed up training, prevent overfitting, and make the training process more robust to changes in the scale of the inputs and weights.

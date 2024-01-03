@@ -1,0 +1,45 @@
+\section{Recurrent Neural Networks}
+A class of nets called recurrent neural networks (RNNs) is capable of foreseeing the future. RNNs are capable of analyzing a variety of time series data, like the number of daily visitors to your website, the local hourly temperature, and more. An RNN can forecast the future using its knowledge of past patterns in the data, presuming of course that those patterns will continue to exist. Similar in appearance to a feedforward neural network, a recurrent neural network also includes connections pointing backward.
+
+\hspace{1cm}
+
+Let's discuss the simplest possible RNN, which consists of a single neuron taking inputs, producing output, and sending that output back to the neuron that received it, Figure \ref{fig:RNNs} (left). This recurrent neuron receives its own output from the previous time step $\hat{y}_{(t-1)}$ and the inputs $x_{(t)}$ at each time step $t$. At the first time step, the output is set at $0$, since there is no output at the previous time step. 
+\input{Chapter 1 - Introduction to Neural Networks/Figure/RNNs.tex}
+This little network can be shown in relation to the time axis, Figure \ref{fig:RNNs} (right). "Unrolling the network through time" is what is meant by this. Each neuron receives the output vector from the previous time step, $\hat{y}_{(t-1)}$, as well as the input vector $x_{(t)}$, at each time step $t$. As you can see, now inputs and outputs are vectors. One set of weights is for the inputs $x_{(t)}$, and the other is for the outputs of the previous time step $\hat{y}_{(t-1)}$ for each recurrent neuron. These weight vectors will be abbreviated $w_x$ and $w_{\hat{y}}$. We can organize all the weight vectors into two weight matrices, $W_x$ and $W_{\hat{y}}$, if we think about the entire recurrent layer rather than just one recurrent neuron.
+The output vector of the entire recurrent layer can then be calculated in a similar way to what one might anticipate.
+
+\begin{equation}
+\hat{y}_{(t)} = \sigma \left(W_{x}^{T} x_{(t)} + w_{\hat{y}}^{T} \hat{y}_{(t-1)} + b \right)
+\end{equation}
+
+Like feedforward neural networks, by putting all the inputs at time step t into an input matrix X, we can compute the output of a recurrent layer in one single step for an entire mini-batch.
+    
+\begin{equation}
+    \begin{split}
+    \hat{Y}_{(t)} & = \sigma \left(X_{(t)} W_x + \hat{Y}_{(t-1)} W_{\hat{y}} + b \right) \\
+    & = \sigma \left(\begin{bmatrix} X_{(t)} & \hat{Y}_{(t-1)} \end{bmatrix} W + b \right) \text{with } W = \begin{bmatrix} 
+    W_{x} \\
+    W_{\hat{y}} 
+    \end{bmatrix}
+    \end{split}
+    \label{eq:2_12}
+\end{equation}
+
+In above equation, \eqref{eq:2_12}, we can see:
+\begin{itemize}
+    \item $\hat{Y}_{(t)}$ is an \text{\textit{m} $\times$ $n_{\text{neurons}}$} matrix containing the layer's output at time step $t$ for each instance in the mini batch.
+    \item $X_{(t)}$ is an \text{\textit{m} $\times$ $n_{\text{inputs}}$} matrix containing the inputs for all instances. 
+    \item $W_{x}$ is an \text{$n_{\text{inputs}} \times n_{\text{neurons}}$} matrix containing the connection weights for the inputs of the current time step.
+    \item $W_{\hat{y}}$ is an \text{$n_{\text{neurons}}$ $\times$ $n_{\text{neurons}}$} matrix containing the connection weights for the outputs of the previous time step.
+    \item $b$ is a vector of size $n_{\text{neurons}}$ containing each neuron's bias term.
+    \item The weight matrices $W_{x}$ and $W_{\hat{y}}$ are concatenated vertically into a single weight matrix $W$.
+    \item The notation $\begin{bmatrix} X_{(t)} & \hat{Y}_{(t-1)} \end{bmatrix}$ represents the horizontal concatenation of the matrices $X_{(t)}$ and $\hat{Y}_{(t-1)}$.
+\end{itemize}
+
+Notice that $\hat{Y}_{(t)}$ is a function of $X_{(t)}$ and $\hat{Y}_{(t-1)}$, which is a function of $X_{(t-1)}$ and $\hat{Y}_{(t-2)}$, which is a function of $X_{(t-2)}$ and $\hat{Y}_{(t-3)}$, and so on. This makes $\hat{Y}_{(t)}$ a function of all the inputs since time $t = 0$ (that is $X_{(0)}, X_{(1)}, X_{(2)}, ...., X_{(t)}$). At the first time step, $t = 0$, there are no previous outputs, so they are assumed to be all zeros.
+
+\input{Chapter 1 - Introduction to Neural Networks/Subsection 4.1 - How to train a RNN.tex}
+
+\input{Chapter 1 - Introduction to Neural Networks/Subsection 4.2 - LSTM.tex}
+
+\input{Chapter 1 - Introduction to Neural Networks/Subsection 4.3 - GRU.tex}
