@@ -68,10 +68,16 @@ numberstyle = \tiny,
 }
 \usepackage{mwe}
 
-\usepackage{biblatex}
 \usepackage{url}
 \usepackage{hyperref}
 \usepackage{fancyhdr}
+
+
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=none
+]{biblatex}
 \addbibresource{refs.bib}
 
 \linespread{1.1}

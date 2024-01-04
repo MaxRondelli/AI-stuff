@@ -1,6 +1,6 @@
 \subsection{Batch Normalization}
 The danger of the vanishing/exploding gradients problems can be considerably reduced at the beginning of training by employing Glorot initialization in conjunction with ReLU, but this does not ensure that they won't reappear later on.
-In a 2015 paper -, Sergey Ioffe and Christopher Szegedy suggested a method to solve these issues called \textit{batch normalization} (BN). The procedure includes inserting an operation into the model just before or after each hidden layer's activation function. The technique helps the model discover the ideal mean and scale for each input layer. In many circumstances, standardizing your training set is unnecessary if you include a BN layer as the initial layer of your neural network.
+In a 2015 paper \parencite{ioffe2015batch}, Sergey Ioffe and Christopher Szegedy suggested a method to solve these issues called \textit{batch normalization} (BN). The procedure includes inserting an operation into the model just before or after each hidden layer's activation function. The technique helps the model discover the ideal mean and scale for each input layer. In many circumstances, standardizing your training set is unnecessary if you include a BN layer as the initial layer of your neural network.
 
 \hspace{1cm}
 

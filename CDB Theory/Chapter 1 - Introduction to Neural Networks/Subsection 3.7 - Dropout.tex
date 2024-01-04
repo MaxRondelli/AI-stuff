@@ -1,5 +1,5 @@
 \subsection{Dropout}
-Dropout, Figure \ref{fig:Dropout}, is one of the most popular regularization techniques for deep neural networks. It was proposed in a paper - by Geoffry Hinton et al. in 2012. 
+Dropout, Figure \ref{fig:Dropout}, is one of the most popular regularization techniques for deep neural networks. It was proposed in a paper \parencite{hinton2012improving} by Geoffry Hinton et al. in 2012. 
 It is a relatively straightforward algorithm: at each training step, each neuron (including input neurons but never output neurons) has a probability $p$ of being temporarily "dropped out," which means it will be completely ignored during this training phase but may be active during the next. This means that their activations are set to zero, and their incoming and outgoing connections are ignored. This has the effect of reducing the number of parameters in the network and making it more difficult for the network to memorize the training data. The dropout rate, also known as the hyperparameter p, is normally set between 10\% and 50\%; in recurrent neural networks, it is more likely to be between 20\% and 30\%. 
 
 \input{Chapter 1 - Introduction to Neural Networks/Figure/Dropout-figure.tex}
