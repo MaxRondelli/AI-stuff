@@ -1,0 +1,16 @@
+\section{Batch and Online learning}
+The ability of machine learning systems to learng gradually from an incoming data stream is another factor used to categorize them.
+
+\subsection{Batch learning}
+The system cannot learn incrementally while using batch learning. It needs to be trained with all of the information at present. This is usually done offline because it will require a significant amount of time and computing power. After the system has been trained, it is put into production and continues to function without learning. 
+Unfortunately, because the world keeps changing while the model stays the same, a model's performance gradually deteriorates over time.
+Regularly retraining the model on current data is the solution. The frequency of that depends on the use case: if the model is used to classify images of dogs and cats, it will likely decay very slowly; however, if the model is used to analyze rapidly evolving systems, such as financial market predictions, it is likely to decay quickly. 
+A new version of the system must be trained on the entire dataset in order for a batch learning system to learn about new data. The old model must then be replaced with the new one. 
+In all cases, using algorithms with incremental learning capabilities is a better solution. 
+
+\subsection{Online learning}
+Online learning requires adding data instances to the system one after the other, either individually or in small groups known as mini-batches, in order to train the system incrementally. 
+Because each learning phase is quick and cheap, the system can absorb new data as it comes in. 
+For systems like the previously mentioned one that must adjust to change very quickly, online learning is helpful.
+It is also a wise choice if computing resources are limited.
+Furthermore, models can be trained on enormous datasets that are too large to fit in a single machine's main memory using online learning algorithms. The algorithm loads a portion of the data, uses that portion of the data for a training step, and keeps doing this until it has used all of the data.
