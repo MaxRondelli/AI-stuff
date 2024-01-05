@@ -14,3 +14,6 @@ Because each learning phase is quick and cheap, the system can absorb new data a
 For systems like the previously mentioned one that must adjust to change very quickly, online learning is helpful.
 It is also a wise choice if computing resources are limited.
 Furthermore, models can be trained on enormous datasets that are too large to fit in a single machine's main memory using online learning algorithms. The algorithm loads a portion of the data, uses that portion of the data for a training step, and keeps doing this until it has used all of the data.
+
+How quickly an online learning system should adjust to changing data is one of its key parameters. We refer to this as learning rate. Setting a high learning rate will cause your system to learn new information quickly, which is not always a good thing because it will also cause it to forget old information quickly. 
+On the other hand, the system will show more resistance if the learning rate is set low. In other words, although it will learn more slowly, it will also be less vulnerable to noise in new information or to a series of anomalous data points.

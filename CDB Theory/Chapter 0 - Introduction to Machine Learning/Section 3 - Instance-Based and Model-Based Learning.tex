@@ -1,0 +1,24 @@
+\section{Instance-Based and Model-Based Learning}
+The way machine learning systems generalize can also be used to classify them. Prediction is the main goal of most machine learning tasks.
+This implies that the system must be able to accurately predict instances it has never seen before given a sufficient number of training examples. 
+While useful, having a strong performance metric on the training set is insufficient. Getting good results on fresh instances is the real goal. 
+There are two way to generalization: instance-based learning and model-based learing. 
+
+\subsection{Instance-based learning}
+The system learns from examples. It applies generalization to new cases by comparing them to the learned examples using a similarity measure. 
+It builds hypotheses based on the training cases in question. This implies that the complexity of the hypothesis may increase as data do. 
+The capacity of instance-based learning to modify its model in response to data that hasn't been seen before gives it an advantage over other machine learning techniques. 
+The k-nearest neighbors algorithm is one example of an instance-based learning algorithm.
+
+\subsection{Model-based learning}
+Creating a model of a set of examples and using it to generate predictions is another method for generalizing from a set of examples. We refer to this as model-based learning.
+We can divide the pipeline in four steps: 
+\begin{enumerate}
+    \item Study the data
+    \item Select the model
+    \item Train the model on the training data. The learning algorithm searchs for the model parameter values that minimize a cost function. 
+    A cost function is a measure of how well a machine learning model performs by quantifying the difference between predicted and actual outputs. Its goal is to be minimized by adjusting the model's parameters during training.
+    \item Finally, the model can make predictions on new cases. Hoping that htis model will generalize well.
+\end{enumerate}
+
+This is waht a typical machine learing project looks like.
