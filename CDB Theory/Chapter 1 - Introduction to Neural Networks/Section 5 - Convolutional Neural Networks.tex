@@ -5,5 +5,44 @@ The convolutional layer applies filter to the input imagine to extract features,
 and the fully connected layer makes the final prediction. The network learns the optimal filters through backpropagation and gradient descent. 
 
 \subsection{Convolutional Layers}
-
 %\input{Chapter 1 - Introduction to Neural Networks/Figure/CNN.tex}
+
+CNN are neural networks that share their parameters. Consider you have an image. It can be shown as a cuboid with three dimensions: height, width, and length of the image. 
+The information is extrapolated in the convolutional part of the network. The convolutional layers, activation layers, and pooling layers are the three organic layers 
+that make up this block. These layers are referred to as the "hidden" part of the network.
+The information processed is collected and categorized in the final block of the chain, which is the fully connected layers. 
+It deals with different combinations of features in order to make the final decisions. 
+
+The part of the network that requires the most computation is handled by the convolutional layers (CONV). A 2 or 3-dimensional array 
+of values can be used as the input data for a CONV layer. A series of filters that cover the entire depth of the input volume make up the learnable parameters.
+A set of hyper-parameters characterizes the filters: 
+\begin{itemize}
+    \item the spatial dimensions of the filters: define how many pixels are
+    processed by the filter, also called receptive field
+    \item the number of filters: characterize the depth of the output
+    \item the stride: characterize the sliding of the filters
+\end{itemize}
+
+
+
+
+
+
+// 
+
+Convolutional neural networks are composed of neurons with learnable weigths and biases, much like regular neural networks from the previous chapters. 
+Convolutional neural networks take advantage of the fact that the input consists of images and they constrain the architecture in a more sensible way. 
+Specifically, in constrat to a standar neural network, a ConvNet's layers contain neurons arranged in three dimensions: depth, width, and height. 
+In CIFAR-10 dataset, which is a collection of images that are used to train machine learning and computer vision algorithms. It is one the most widely used dataset for ML researchs. 
+It contains 60,000 32x32 color images in 10 different classes.  
+
+
+
+Convolutional neural networks take inputs that have some spatial consistency. Have some spatial meaning in them like images, audio.
+The input of a CNN is a 3D volume and the output is a 3D volume. There's height, weigth and depth. The height and weigth are the height and weight of the image. 
+The depth for grayscale image is 1 and for a RGB image is 3. 
+
+What are the type of layers that a convolutional neural networks have?
+\begin{itemize}
+    \item \textbf{Input:} a color image 32x32 would be a volume of 32x32x3.
+\end{itemize}
